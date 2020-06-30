@@ -1,5 +1,8 @@
 
 const { io } = require('../server');
+const { TicketControl } = require('../classes/Ticket-control');
+
+const ticketControl = new TicketControl;
 
 io.on('connection', client => {
     console.log("Un usuario conectado")
@@ -19,7 +22,13 @@ io.on('connection', client => {
     client.on('enviarMensaje', (data) => {
 
         console.log(data);
-
+        // Esto le envia un evento a todos los clientes que esten conectados
         client.broadcast.emit('enviarMensaje', data);
     });
+
+    client.on('siguienteTicket', (data, callback) => {
+        // console.log('Cual es el siguiente ticket');
+        callback(ticketControl.siguiente());
+        // client.emit('siguienteTicket', ticketControl.siguiente())}
+    })
 });
