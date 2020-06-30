@@ -17,7 +17,7 @@ socket.on('disconnect', () => {
 // })
 // eslint-disable-next-line no-undef
 $('button').on('click', () => {
-    console.log('click');
+    // console.log('click');
     socket.emit('siguienteTicket', null, (siguienteTicket) => {
         label.text(siguienteTicket)
     });
