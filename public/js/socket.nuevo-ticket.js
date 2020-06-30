@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 const socket = io();
-
+// eslint-disable-next-line no-undef
 const label = $('#lblNuevoTicket');
 
 socket.on('connect', () => {
